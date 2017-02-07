@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Asp_mvc_2.Security;
 
 namespace Asp_mvc_2.Controllers
 {
@@ -15,6 +16,17 @@ namespace Asp_mvc_2.Controllers
 
         [Authorize]
         public ActionResult Welcome()
+        {
+            return View();
+        }
+
+        [AuthorizeRoles("Admin")]
+        public ActionResult AdminOnly()
+        {
+            return View();
+        }
+
+        public ActionResult UnAuthorized()
         {
             return View();
         }
